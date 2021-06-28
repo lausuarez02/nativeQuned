@@ -1,13 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { NavigationContainer} from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+//import { Text } from 'galio-framework'
+
+//importing components
+import Home from "./components/Home.js";
+import Quiz from "./components/Quiz.js";
+import Questions from "./components/Questions.js";
+import Name from "./components/name.js";
+import Landing from "./components/landing.js";
+
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+   <NavigationContainer>
+     <Stack.Navigator initialRouteName="First">
+       <Stack.Screen name="First" component={First} options={{headerShown: false}}/>
+       <Stack.Screen name="Landing" component={Landing} options={{ headerShown: false }}/>
+       <Stack.Screen name="Home" component={Home}/>
+       <Stack.Screen name="Quiz" component={Quiz}/>
+       <Stack.Screen name="Preguntas" component={Questions}/>
+       <Stack.Screen name="Name" component={Name}/>
+     </Stack.Navigator>
+   </NavigationContainer>
   );
 }
 
